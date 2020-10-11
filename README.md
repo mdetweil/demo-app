@@ -1,29 +1,15 @@
-# quote-fun
+# demo-app
 
 ## Project setup
 ```
-npm install
+yarn install
 ```
 
 ### Compiles and hot-reloads for development
 ```
-npm run serve
+yarn serve
 ```
 
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Run your tests
-```
-npm run test
-```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+See how computed functions are used in the composition module to map to the store, those computed functions are
+then imported into the components and passed down to the children as composed objects, swapping would be as easy 
+as moving one property to another composed object and updating that objects interface to contain a new property
