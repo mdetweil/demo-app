@@ -1,36 +1,35 @@
 <template>
-  <div>
-    <div v-for="joke in jokes.jokes" :key="joke.id">
-      <ListJokes :question="joke.question" :answer="joke.answer" :votes="joke.votes"/>
-      <br>
-    </div>
-    <v-layout>
-      <v-flex sm2 offset-sm6></v-flex>
-      <v-btn :to="{name: 'add'}" color="red" large>Add Joke</v-btn>
-    </v-layout>
-  </div>
+  <v-container>
+    <InfoSection v-model="data" />
+    <div>Name: {{firstName}} {{middleName}} {{lastName}}</div>
+  </v-container>
 </template>
 
 <script>
 // @ is an alias to /src
-import ListJokes from "@/components/ListJokes.vue";
-import { mapGetters } from "vuex";
+  import { useStore } from '@/composables/useStore'
+  import InfoSection from '@/components/InfoSection.vue'
 
 export default {
   name: "home",
-  mounted() {
-    this.$store.dispatch("initStore");
-  },
-  data() {
-    return {
-      jokeList: {}
-    };
-  },
   components: {
-    ListJokes
+    InfoSection
   },
-  computed: {
-    ...mapGetters(["jokes"])
+  setup() {
+    const { firstName, middleName, lastName } = useStore()
+
+    const data = {
+      firstName,
+      middleName,
+      lastName
+    }
+
+    return {
+      data,
+      firstName,
+      middleName,
+      lastName
+    }
   }
 };
 </script>
